@@ -89,14 +89,7 @@ public class ChichaPermissioinActivity extends AppCompatActivity {
 
         if (!Settings.System.canWrite(this)) {
             ActivityCompat.requestPermissions(this,
-                    new String[]{android.Manifest.permission.WRITE_EXTERNAL_STORAGE, android.Manifest.permission.VIBRATE,
-                            android.Manifest.permission.INTERNET, android.Manifest.permission.ACCESS_WIFI_STATE,
-                            android.Manifest.permission.WAKE_LOCK, android.Manifest.permission.ACCESS_COARSE_LOCATION,
-                            android.Manifest.permission.ACCESS_NETWORK_STATE, android.Manifest.permission.ACCESS_FINE_LOCATION,
-                            android.Manifest.permission.CHANGE_WIFI_STATE, android.Manifest.permission.MOUNT_UNMOUNT_FILESYSTEMS,
-                            android.Manifest.permission.READ_EXTERNAL_STORAGE, android.Manifest.permission.SYSTEM_ALERT_WINDOW,
-                            android.Manifest.permission.READ_PHONE_STATE,
-                    }, Global.REQ_PERMISSION_CHECK);
+                    permissions, Global.REQ_PERMISSION_CHECK);
         }else{
             permissionGranted();
         }
