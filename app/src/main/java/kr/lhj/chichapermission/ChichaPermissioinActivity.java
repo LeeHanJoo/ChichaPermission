@@ -33,7 +33,7 @@ public class ChichaPermissioinActivity extends AppCompatActivity {
 
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
         getPermissionInfo();
-        showConfirmDialog();
+      //  showConfirmDialog();
 
         if(needWindowPermission()){
             requestWindowPermission();
