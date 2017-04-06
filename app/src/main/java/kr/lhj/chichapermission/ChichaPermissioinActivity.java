@@ -46,25 +46,9 @@ public class ChichaPermissioinActivity extends AppCompatActivity {
     }
 
     private void requestWindowPermission() {
-       // Uri uri = Uri.fromParts("package", packageName, null);
-       // final Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION, uri);
-        showConfirmDialog();
-       /* if(!TextUtils.isEmpty(confirmMessage)) {
-            new AlertDialog.Builder(this)
-                    .setMessage(confirmMessage)
-                    .setCancelable(false)
 
-                    .setNegativeButton(rationaleConfirmText, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            startActivityForResult(intent, REQ_CODE_SYSTEM_ALERT_WINDOW_PERMISSION_REQUEST);
-                        }
-                    })
-                    .show();
-            isShownRationaleDialog = true;
-        }else {
-            startActivityForResult(intent, REQ_CODE_SYSTEM_ALERT_WINDOW_PERMISSION_REQUEST);
-        }*/
+        showConfirmDialog();
+
     }
 
     private void getPermissionInfo(){
@@ -76,8 +60,9 @@ public class ChichaPermissioinActivity extends AppCompatActivity {
 
     private void showConfirmDialog(){
         new AlertDialog.Builder(this)
+            .setMessage(confirmMessage)
             .setCancelable(false)
-            .setNegativeButton(confirmMessage, new DialogInterface.OnClickListener() {
+            .setNegativeButton(Global.CONFIRM_TEXT, new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
                     checkPermission();

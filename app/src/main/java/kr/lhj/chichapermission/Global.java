@@ -16,4 +16,5 @@ public class Global {
 
     public static final String EXTRA_PACKAGE_NAME = "pakageName";
 
+    public static final String CONFIRM_TEXT = "확인";
 }
