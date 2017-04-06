@@ -14,6 +14,6 @@ public class Global {
 
     public static final String EXTRA_DENIED_MESSAGE = "deniedMessage";
 
-
+    public static final String EXTRA_PACKAGE_NAME = "pakageName";
 
 }

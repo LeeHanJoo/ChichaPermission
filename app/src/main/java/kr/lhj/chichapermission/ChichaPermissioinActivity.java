@@ -7,8 +7,10 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
+import android.view.WindowManager;
+
 import java.util.ArrayList;
 
 import kr.lhj.chichapermission.bus.ChichaBusEvent;
@@ -23,21 +25,53 @@ public class ChichaPermissioinActivity extends AppCompatActivity {
     String[] permissions;
     String confirmMessage;
     String deniedMessage;
+    String packageName;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-       // getWindow().addFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
         getPermissionInfo();
         showConfirmDialog();
-        checkPermission();
 
+        if(needWindowPermission()){
+            requestWindowPermission();
+        }else{
+            checkPermission();
+        }
+
+
+
+    }
+
+    private void requestWindowPermission() {
+       // Uri uri = Uri.fromParts("package", packageName, null);
+       // final Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION, uri);
+        showConfirmDialog();
+       /* if(!TextUtils.isEmpty(confirmMessage)) {
+            new AlertDialog.Builder(this)
+                    .setMessage(confirmMessage)
+                    .setCancelable(false)
+
+                    .setNegativeButton(rationaleConfirmText, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            startActivityForResult(intent, REQ_CODE_SYSTEM_ALERT_WINDOW_PERMISSION_REQUEST);
+                        }
+                    })
+                    .show();
+            isShownRationaleDialog = true;
+        }else {
+            startActivityForResult(intent, REQ_CODE_SYSTEM_ALERT_WINDOW_PERMISSION_REQUEST);
+        }*/
     }
 
     private void getPermissionInfo(){
         permissions = getIntent().getStringArrayExtra(Global.EXTRA_PERMISSIONS);
         confirmMessage = getIntent().getStringExtra(Global.EXTRA_CONFIRM_MESSAGE);
         deniedMessage = getIntent().getStringExtra(Global.EXTRA_DENIED_MESSAGE);
+        packageName = getIntent().getStringExtra(Global.EXTRA_PACKAGE_NAME);
     }
 
     private void showConfirmDialog(){

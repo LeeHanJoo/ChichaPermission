@@ -37,7 +37,7 @@ public class ChichaInstance {
         intent.putExtra(Global.EXTRA_PERMISSIONS,permissions);
         intent.putExtra(Global.EXTRA_CONFIRM_MESSAGE,permissionMessage);
         intent.putExtra(Global.EXTRA_DENIED_MESSAGE,permissionDeniedMessage);
-
+        intent.putExtra(Global.EXTRA_PACKAGE_NAME, context.getPackageName());
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
         context.startActivity(intent);
